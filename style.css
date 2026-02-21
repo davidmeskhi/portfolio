@@ -141,8 +141,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 2.1% 80px;
-    max-width: 1200px;
+    padding: 40px 0.8% 80px;
+    max-width: 1520px;
     margin: 0 auto;
 }
 
@@ -179,9 +179,9 @@ nav a:hover {
 
 
 .hero {
-    max-width: 1200px;
+    max-width: 1520px;
     margin: 0 auto 80px;
-    padding: 0 2.1%;
+    padding: 0 0.8%;
 }
 
 .hero-content {
@@ -225,7 +225,7 @@ nav a:hover {
     margin: 60px 0 100px;
     overflow: hidden;
     white-space: nowrap;
-    padding: 20px 2.1%;
+    padding: 20px 0.8%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,7 +237,7 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1520px;
 }
 
 .stat {
@@ -259,11 +259,12 @@ nav a:hover {
     position: relative;
     background-color: var(--bg-white);
     color: var(--text-dark);
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-    border-bottom-left-radius: 32px;
-    border-bottom-right-radius: 32px;
-    padding: 100px 2.1% 120px;
+    border-radius: 24px;
+    padding: 100px 0.8% 120px;
+    margin: 0 auto;
+    width: calc(100% - 16px);
+    max-width: 1500px;
+    border: 1px solid var(--border-color);
 }
 
 .projects-glow {
@@ -319,7 +320,7 @@ nav a:hover {
 .projects-container {
     position: relative;
     z-index: 1;
-    max-width: 1200px;
+    max-width: 1520px;
     margin: 0 auto;
 }
 
@@ -346,8 +347,9 @@ nav a:hover {
     overflow: hidden;
     padding-bottom: 20px;
     margin-bottom: 120px;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .thumbnails-track {
@@ -452,12 +454,12 @@ nav a:hover {
 
 
 .contact {
-    padding: 120px 2.1%;
+    padding: 120px 0.8%;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 80px;
-    max-width: 1200px;
+    max-width: 1520px;
     margin: 0 auto;
 }
 
@@ -559,12 +561,12 @@ textarea {
 .site-footer {
     background-color: #050505;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 40px 2.1%;
+    padding: 40px 0.8%;
     margin-top: 60px;
 }
 
 .footer-content {
-    max-width: 1200px;
+    max-width: 1520px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
