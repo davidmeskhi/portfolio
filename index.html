@@ -249,144 +249,146 @@
 
       if (!track || !thumb) return;
 
-      // --- Variables for Smooth Scrollbar Thumb ---
-      let currentLeftPercent = 0;
-      let targetLeftPercent = 0;
-      let thumbWidthPercent = 15;
-
-      // Update the target scrollbar metrics based on actual scroll position
-      const updateScrollbarTarget = () => {
-        const maxScrollLeft = track.scrollWidth - track.clientWidth;
-        if (maxScrollLeft > 0) {
-          const scrollPercentage = track.scrollLeft / maxScrollLeft;
-          // Calculate proportional width
-          const viewportRatio = track.clientWidth / track.scrollWidth;
-          thumbWidthPercent = Math.max(viewportRatio * 100, 15);
-
-          // Calculate target left position
-          const maxLeftPercent = 100 - thumbWidthPercent;
-          targetLeftPercent = scrollPercentage * maxLeftPercent;
-
-          thumb.style.width = `${thumbWidthPercent}%`;
-        }
-      };
-
-      // Animation loop for buttery smooth thumb movement using lerp
-      const smoothScrollbarLoop = () => {
-        // Lerp factor (lower is smoother/slower, higher is snappier)
-        currentLeftPercent += (targetLeftPercent - currentLeftPercent) * 0.15;
-        thumb.style.left = `${currentLeftPercent}%`;
-        requestAnimationFrame(smoothScrollbarLoop);
-      };
-
-      // Initial setup
-      updateScrollbarTarget();
-      currentLeftPercent = targetLeftPercent; // snap instantly on load
-      smoothScrollbarLoop(); // start the loop
-
-      track.addEventListener('scroll', updateScrollbarTarget);
-      window.addEventListener('resize', updateScrollbarTarget);
-
-      // --- Custom Mouse Dragging State ---
+      // --- Variables for Smooth Scroll ---
       let isDragging = false;
       let dragMode = ''; // 'track' or 'thumb'
       let startX;
       let startScrollLeft;
 
-      // Momentum variables for the track
+      let targetScrollLeft = track.scrollLeft;
+      let currentScrollLeft = track.scrollLeft;
       let velX = 0;
-      let momentumID;
 
-      // 1. Dragging the purple Thumb handle
+      let currentLeftPercent = 0;
+      let targetLeftPercent = 0;
+      let thumbWidthPercent = 15;
+
+      const renderLoop = () => {
+        const maxS = Math.max(0, track.scrollWidth - track.clientWidth);
+
+        if (isDragging) {
+          const prevScroll = currentScrollLeft;
+          currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.2; // Lerp factor
+
+          // Soft bounds constraint
+          if (targetScrollLeft < -50) targetScrollLeft = -50;
+          if (targetScrollLeft > maxS + 50) targetScrollLeft = maxS + 50;
+
+          track.scrollLeft = currentScrollLeft;
+
+          if (dragMode === 'track') {
+            velX = currentScrollLeft - prevScroll;
+          } else {
+            velX = 0; // Thumb dragging doesn't need track inertia
+          }
+        } else {
+          if (Math.abs(velX) > 0.1) {
+            currentScrollLeft += velX;
+            track.scrollLeft = currentScrollLeft;
+            velX *= 0.95; // Glide friction
+
+            if (currentScrollLeft <= 0) {
+              currentScrollLeft = 0;
+              velX = 0;
+            } else if (currentScrollLeft >= maxS) {
+              currentScrollLeft = maxS;
+              velX = 0;
+            }
+          } else {
+            // Sync internal state with native scroll changes (e.g., trackpad)
+            currentScrollLeft = track.scrollLeft;
+            targetScrollLeft = track.scrollLeft;
+          }
+        }
+
+        if (maxS > 0) {
+          // Keep visual percentage between 0 and 1
+          const scrollPercentage = Math.max(0, Math.min(1, track.scrollLeft / maxS));
+          const viewportRatio = track.clientWidth / track.scrollWidth;
+          thumbWidthPercent = Math.max(viewportRatio * 100, 15);
+
+          const maxLeftPercent = 100 - thumbWidthPercent;
+          targetLeftPercent = scrollPercentage * maxLeftPercent;
+
+          thumb.style.width = `${thumbWidthPercent}%`;
+
+          currentLeftPercent += (targetLeftPercent - currentLeftPercent) * 0.25;
+          thumb.style.left = `${currentLeftPercent}%`;
+        }
+
+        requestAnimationFrame(renderLoop);
+      };
+
+      // Start the central engine
+      requestAnimationFrame(renderLoop);
+
+      // --- Interaction Events ---
+
       thumb.addEventListener('mousedown', (e) => {
         isDragging = true;
         dragMode = 'thumb';
         startX = e.pageX;
         startScrollLeft = track.scrollLeft;
+        targetScrollLeft = startScrollLeft;
+        velX = 0;
 
-        // Temporarily disable snap during drag for fluidity
         track.style.scrollSnapType = 'none';
         document.body.style.userSelect = 'none';
         thumb.style.cursor = 'grabbing';
-
-        cancelAnimationFrame(momentumID);
       });
 
-      // 2. Dragging the Cards wrapper (Track)
       track.addEventListener('mousedown', (e) => {
-        // Don't interfere if they are clicking a link or something inside
         if (e.target.tagName.toLowerCase() === 'a') return;
-
         isDragging = true;
         dragMode = 'track';
         startX = e.pageX;
         startScrollLeft = track.scrollLeft;
+        targetScrollLeft = startScrollLeft;
+        velX = 0;
 
         track.style.scrollSnapType = 'none';
         track.style.cursor = 'grabbing';
         document.body.style.userSelect = 'none';
-
-        cancelAnimationFrame(momentumID);
       });
 
-      // Global Mouse Move
-      document.addEventListener('mousemove', (e) => {
+      window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
 
         const deltaX = e.pageX - startX;
 
         if (dragMode === 'thumb') {
-          // If dragging thumb, move track proportionally
           const containerWidth = thumb.parentElement.clientWidth;
           const maxLeft = containerWidth - thumb.clientWidth;
-          const maxScrollLeft = track.scrollWidth - track.clientWidth;
+          const maxS = Math.max(0, track.scrollWidth - track.clientWidth);
 
           if (maxLeft > 0) {
-            const scrollRatio = maxScrollLeft / maxLeft;
-            track.scrollLeft = startScrollLeft + (deltaX * scrollRatio);
+            const scrollRatio = maxS / maxLeft;
+            targetScrollLeft = startScrollLeft + (deltaX * scrollRatio);
           }
         } else if (dragMode === 'track') {
-          // If dragging track, move 1:1 in opposite direction
-          // Store velocity for momentum calculation
-          const prevScrollLeft = track.scrollLeft;
-          track.scrollLeft = startScrollLeft - deltaX;
-          velX = track.scrollLeft - prevScrollLeft;
+          targetScrollLeft = startScrollLeft - deltaX;
         }
       });
 
-      // Global Mouse Up
-      document.addEventListener('mouseup', () => {
+      window.addEventListener('mouseup', () => {
         if (!isDragging) return;
         isDragging = false;
 
-        // Reset cursors and selection
         document.body.style.userSelect = '';
         thumb.style.cursor = 'pointer';
-        track.style.cursor = '';
+        track.style.cursor = 'grab';
 
-        // Re-enable snap after a tiny delay so momentum can play out slightly,
-        // but the CSS scroll-snap will eventually grab it.
+        // Let momentum decay naturally, then turn snap back on
         setTimeout(() => {
-          track.style.scrollSnapType = 'x mandatory';
-        }, 800);
-
-        if (dragMode === 'track') {
-          // Apply momentum decay
-          const applyMomentum = () => {
-            if (Math.abs(velX) > 0.5) {
-              track.scrollLeft += velX;
-              velX *= 0.95; // friction
-              momentumID = requestAnimationFrame(applyMomentum);
-            }
-          };
-          momentumID = requestAnimationFrame(applyMomentum);
-        }
+          if (!isDragging && Math.abs(velX) < 1) {
+            track.style.scrollSnapType = 'x mandatory';
+          }
+        }, 1200);
 
         dragMode = '';
       });
 
-      // Prevent default drag behaviors on images so they don't ghost
       track.querySelectorAll('img').forEach(img => {
         img.addEventListener('dragstart', e => e.preventDefault());
       });
