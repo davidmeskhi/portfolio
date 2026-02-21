@@ -140,6 +140,74 @@
       </div>
     </section>
 
+    <section class="experience-section" id="experience">
+      <div class="experience-content">
+        <h2>My <span class="text-green">Experience &amp; Education</span></h2>
+      </div>
+
+      <div class="experience-wrapper">
+        <div class="experience-track">
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-badge">
+                <span class="pulse"></span>
+                HKCM
+              </span>
+              <span class="exp-date">2024 - Now</span>
+            </div>
+            <p>Create high-impact digital visuals and promotional campaigns for 800,000+ followers, leveraging KPI
+              analysis and optimization to maximize engagement, click-through rates, and audience retention.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-badge">Distort Learn</span>
+              <span class="exp-date">2024</span>
+            </div>
+            <p>Completed advanced training in social media strategy, performance marketing, KPI analysis, and campaign
+              optimization. Developed expertise in audience targeting, content strategy, and data-driven decision-making
+              to drive measurable digital growth.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-badge">Salz Kommunikation</span>
+              <span class="exp-date">2023</span>
+            </div>
+            <p>Collaborated with Salz Kommunikation on a client project, developing a cohesive brand identity and visual
+              direction. Designed core brand assets and supporting visual systems, translating strategic objectives into
+              a clear and consistent brand presence across digital and print platforms.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-badge">Freelance</span>
+              <span class="exp-date">2022 - 2023</span>
+            </div>
+            <p>Worked as a freelance graphic designer, delivering brand identities and digital marketing visuals for
+              clients in tech and finance. Managed projects from concept to execution, ensuring strategic alignment,
+              brand consistency, and high-performance design solutions across multiple touchpoints.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-badge">Design Agency X</span>
+              <span class="exp-date">2020 - 2022</span>
+            </div>
+            <p>Led conceptual design initiatives and established core visual guidelines for emerging startup brands.
+              Specialized in creating scalable digital assets and modern web UI libraries designed specifically for
+              high-conversion landing environments and digital ads.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="custom-scrollbar-container">
+        <div class="custom-scrollbar-thumb"></div>
+      </div>
+    </section>
+
     <section class="contact" id="contact">
       <div class="contact-info">
         <h2><span class="text-green">Contact</span> Me</h2>
@@ -173,6 +241,157 @@
       <p class="copyright">&copy; 2026 David Meskhi. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.querySelector('.experience-track');
+      const thumb = document.querySelector('.custom-scrollbar-thumb');
+
+      if (!track || !thumb) return;
+
+      // --- Variables for Smooth Scrollbar Thumb ---
+      let currentLeftPercent = 0;
+      let targetLeftPercent = 0;
+      let thumbWidthPercent = 15;
+
+      // Update the target scrollbar metrics based on actual scroll position
+      const updateScrollbarTarget = () => {
+        const maxScrollLeft = track.scrollWidth - track.clientWidth;
+        if (maxScrollLeft > 0) {
+          const scrollPercentage = track.scrollLeft / maxScrollLeft;
+          // Calculate proportional width
+          const viewportRatio = track.clientWidth / track.scrollWidth;
+          thumbWidthPercent = Math.max(viewportRatio * 100, 15);
+
+          // Calculate target left position
+          const maxLeftPercent = 100 - thumbWidthPercent;
+          targetLeftPercent = scrollPercentage * maxLeftPercent;
+
+          thumb.style.width = `${thumbWidthPercent}%`;
+        }
+      };
+
+      // Animation loop for buttery smooth thumb movement using lerp
+      const smoothScrollbarLoop = () => {
+        // Lerp factor (lower is smoother/slower, higher is snappier)
+        currentLeftPercent += (targetLeftPercent - currentLeftPercent) * 0.15;
+        thumb.style.left = `${currentLeftPercent}%`;
+        requestAnimationFrame(smoothScrollbarLoop);
+      };
+
+      // Initial setup
+      updateScrollbarTarget();
+      currentLeftPercent = targetLeftPercent; // snap instantly on load
+      smoothScrollbarLoop(); // start the loop
+
+      track.addEventListener('scroll', updateScrollbarTarget);
+      window.addEventListener('resize', updateScrollbarTarget);
+
+      // --- Custom Mouse Dragging State ---
+      let isDragging = false;
+      let dragMode = ''; // 'track' or 'thumb'
+      let startX;
+      let startScrollLeft;
+
+      // Momentum variables for the track
+      let velX = 0;
+      let momentumID;
+
+      // 1. Dragging the purple Thumb handle
+      thumb.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        dragMode = 'thumb';
+        startX = e.pageX;
+        startScrollLeft = track.scrollLeft;
+
+        // Temporarily disable snap during drag for fluidity
+        track.style.scrollSnapType = 'none';
+        document.body.style.userSelect = 'none';
+        thumb.style.cursor = 'grabbing';
+
+        cancelAnimationFrame(momentumID);
+      });
+
+      // 2. Dragging the Cards wrapper (Track)
+      track.addEventListener('mousedown', (e) => {
+        // Don't interfere if they are clicking a link or something inside
+        if (e.target.tagName.toLowerCase() === 'a') return;
+
+        isDragging = true;
+        dragMode = 'track';
+        startX = e.pageX;
+        startScrollLeft = track.scrollLeft;
+
+        track.style.scrollSnapType = 'none';
+        track.style.cursor = 'grabbing';
+        document.body.style.userSelect = 'none';
+
+        cancelAnimationFrame(momentumID);
+      });
+
+      // Global Mouse Move
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+
+        const deltaX = e.pageX - startX;
+
+        if (dragMode === 'thumb') {
+          // If dragging thumb, move track proportionally
+          const containerWidth = thumb.parentElement.clientWidth;
+          const maxLeft = containerWidth - thumb.clientWidth;
+          const maxScrollLeft = track.scrollWidth - track.clientWidth;
+
+          if (maxLeft > 0) {
+            const scrollRatio = maxScrollLeft / maxLeft;
+            track.scrollLeft = startScrollLeft + (deltaX * scrollRatio);
+          }
+        } else if (dragMode === 'track') {
+          // If dragging track, move 1:1 in opposite direction
+          // Store velocity for momentum calculation
+          const prevScrollLeft = track.scrollLeft;
+          track.scrollLeft = startScrollLeft - deltaX;
+          velX = track.scrollLeft - prevScrollLeft;
+        }
+      });
+
+      // Global Mouse Up
+      document.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        // Reset cursors and selection
+        document.body.style.userSelect = '';
+        thumb.style.cursor = 'pointer';
+        track.style.cursor = '';
+
+        // Re-enable snap after a tiny delay so momentum can play out slightly,
+        // but the CSS scroll-snap will eventually grab it.
+        setTimeout(() => {
+          track.style.scrollSnapType = 'x mandatory';
+        }, 800);
+
+        if (dragMode === 'track') {
+          // Apply momentum decay
+          const applyMomentum = () => {
+            if (Math.abs(velX) > 0.5) {
+              track.scrollLeft += velX;
+              velX *= 0.95; // friction
+              momentumID = requestAnimationFrame(applyMomentum);
+            }
+          };
+          momentumID = requestAnimationFrame(applyMomentum);
+        }
+
+        dragMode = '';
+      });
+
+      // Prevent default drag behaviors on images so they don't ghost
+      track.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', e => e.preventDefault());
+      });
+    });
+  </script>
 </body>
 
 </html>
