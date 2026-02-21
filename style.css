@@ -1,11 +1,3 @@
-/* 
-Color Palette:
-Background: #0A0A0B (Very Dark Blue/Black)
-Text: #F7F7FF (Off White/Lavender)
-Accent Options: #DB162F, #61C9A8, #EE4266, #9381FF
-Chosen Accent: #EE4266 (Vibrant Pink/Red - Boldest contrast against dark background)
-*/
-
 :root {
     --bg-color: #0A0A0B;
     --text-color: #F7F7FF;
@@ -19,8 +11,7 @@ Chosen Accent: #EE4266 (Vibrant Pink/Red - Boldest contrast against dark backgro
     padding: 0;
 }
 
-body,
-html {
+body, html {
     width: 100%;
     height: 100%;
     background-color: var(--bg-color);
@@ -87,51 +78,10 @@ h1 span {
     font-style: italic;
 }
 
-.subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    line-height: 1.6;
-    color: rgba(247, 247, 255, 0.7);
-    max-width: 600px;
-}
-
-.contact-card {
-    margin-top: 2rem;
-    padding: 2rem;
-    border-top: 1px solid rgba(247, 247, 255, 0.1);
-    width: 100%;
-}
-
-.contact-card p {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(247, 247, 255, 0.5);
-    margin-bottom: 1rem;
-}
-
-.cta-btn {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.cta-btn:hover {
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    transform: translateY(-2px);
-}
-
 /* Background Effects */
 .particles {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -146,12 +96,10 @@ h1 span {
     animation: float infinite linear;
 }
 
-/* Specific floating glow behind text */
 .content-wrapper::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
@@ -160,42 +108,18 @@ h1 span {
     filter: blur(50px);
 }
 
-/* Animations */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float {
-    from {
-        transform: translateY(100vh) rotate(0deg);
-    }
-
-    to {
-        transform: translateY(-100px) rotate(360deg);
-    }
+    from { transform: translateY(100vh) rotate(0deg); }
+    to { transform: translateY(-100px) rotate(360deg); }
 }
 
 @keyframes pulser {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(238, 66, 102, 0.7);
-    }
-
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(238, 66, 102, 0);
-    }
-
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(238, 66, 102, 0);
-    }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(238, 66, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(238, 66, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(238, 66, 102, 0); }
 }
