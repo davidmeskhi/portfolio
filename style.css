@@ -223,22 +223,47 @@ nav a:hover {
 
 
 .marquee {
-    margin: 60px 0 100px;
+    margin: 60px auto 100px;
     overflow: hidden;
     white-space: nowrap;
-    padding: 20px 0.8%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    padding: 20px 0;
+    width: calc(100% - 16px);
+    max-width: 1500px;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.marquee-content {
+.marquee-track {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 1520px;
+    gap: 100px;
+    width: max-content;
+    animation: scrollMarquee 30s linear infinite;
+}
+
+.marquee-track img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.6;
+    flex-shrink: 0;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.marquee-track img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 50px));
+    }
 }
 
 .stat {
