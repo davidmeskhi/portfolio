@@ -100,7 +100,8 @@ body {
 
 .btn-contact-header {
     background-color: var(--accent-green);
-    color: var(--text-dark);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     font-weight: 400;
     box-shadow: 0 0 85px rgba(154, 74, 253, 0.15);
     position: relative;
