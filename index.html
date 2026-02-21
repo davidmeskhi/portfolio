@@ -2,231 +2,139 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Creative Developer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Meskhi - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/logos/Favicon.png">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header class="site-header">
-    <a href="index.html" class="logo-link">
-      <img src="assets/logos/Logo_Weiß.svg" alt="David Logo" class="site-logo">
-    </a>
+  <div class="glow-bg"></div>
+  <header>
+    <div class="logo">
+      <img src="assets/logos/Logo_Weiß.svg" alt="Meskhi Graphics" class="logo-img">
+    </div>
+    <nav>
+      <a href="#work" style="display: flex; align-items: center; gap: 6px;">
+        About me
+        <img src="assets/About_me_vector.png" alt="David" class="nav-about-img">
+      </a>
+      <a href="#services">Experience</a>
+      <a href="#contact" class="btn btn-contact-header" style="margin-left: 20px;">Contact Me</a>
+    </nav>
   </header>
 
-  <main class="hero">
-    <div class="body-layer">
-      <div class="text-container hero-layout">
-        <div class="hero-left">
-          <h1>Hi, I'm David.</h1>
-        </div>
-        <div class="hero-right">
-          <p class="hero-desc">I build brand systems rooted in big-picture thinking—built to scale, strengthen brand
-            clarity, and evolve with business needs.</p>
-          <p class="hero-sub">Currently leading design @ HKCM (600k+ audience)</p>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm <span class="text-green underline">David.</span></h1>
+        <div class="hero-text">
+          <p>I build brand systems and high-impact visuals designed to capture attention and drive growth. From identity
+            and UI to performance-focused content for digital brands.</p>
+          <p class="availability">Currently available for remote work Q3/Q4 2026</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="mask-layer" id="mask-layer">
-      <div class="text-container hero-layout" id="hover-target">
-        <div class="hero-left">
-          <h1>Hi, I'm David.</h1>
+    <section class="marquee">
+      <div class="marquee-content" style="justify-content: center; width: 100%;">
+        <img src="assets/mask-group.png" alt="Logos Marquee" style="width: 100%; height: auto; opacity: 0.8;">
+      </div>
+    </section>
+
+    <section class="projects">
+      <div class="projects-glow"></div>
+      <div class="projects-container">
+        <div class="projects-header">
+          <h2>Fill this <span class="text-green">Textbox</span></h2>
+          <p>Life is moving fast and high impact downloads to capture attention and track growth... When actually
+            watching what we do. Please put this higher up extra.</p>
         </div>
-        <div class="hero-right">
-          <p class="hero-desc">I build brand systems rooted in big-picture thinking—built to scale, strengthen brand
-            clarity, and evolve with business needs.</p>
-          <p class="hero-sub">Currently leading design @ HKCM (600k+ audience)</p>
+
+        <div class="thumbnails-row">
+          <div class="thumbnails-track">
+            <img src="assets/1.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/2.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/3.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/1.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/2.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/3.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/1.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/2.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/3.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/1.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/2.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+            <img src="assets/3.png" alt="Thumbnail"
+              onerror="this.src='https://placehold.co/300x168/222/FFF?text=Thumbnail'">
+          </div>
+        </div>
+
+        <div class="youtube-section">
+          <div class="yt-text">
+            <h3><span class="text-green">Thumbnails</span> for Youtube</h3>
+            <p>I build brand systems and high-impact visuals designed to capture attention and drive growth &mdash; from
+              identity and UI to performance-focused content for digital brands.<br><br>Currently designing at HKCM
+              (800k+ audience)</p>
+            <br>
+          </div>
+          <div class="yt-placeholder">
+            <div class="card card-3"></div>
+            <div class="card card-2"></div>
+            <div class="card card-1"></div>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="projects-glow-bottom"></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-info">
+        <h2><span class="text-green">Contact</span> Me</h2>
+        <p>I'm always open to new opportunities, whether project based or long-term collaborations. Let's talk and see
+          how we can build your brand together.</p>
+        <a href="mailto:info@davidmeskhi.de" class="email-link">info@davidmeskhi.de</a>
+      </div>
+      <div class="contact-form">
+        <h3>Get in touch</h3>
+        <p>Fill out the form below</p>
+        <form>
+          <div class="form-row">
+            <input type="text" placeholder="First Name">
+            <input type="text" placeholder="Last Name">
+          </div>
+          <input type="email" placeholder="Email Contact" style="margin-bottom: 15px;">
+          <textarea placeholder="Tell us about your project..."></textarea>
+          <button type="submit" class="btn btn-primary">Request</button>
+          <p class="form-note">By clicking request, you agree to our Terms and Conditions.</p>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <section class="portfolio-grid">
-    <a href="video.html?v=dQw4w9WgXcQ" class="grid-item">
-      <div class="image-wrapper"><img src="assets/1.png" alt="Project 1"></div>
-      <div class="item-details">
-        <h2>Concrete & Light</h2><span>2024</span>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+        <a href="https://github.com/meskhi" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
       </div>
-    </a>
-    <a href="video.html?v=jNQXAC9IVRw" class="grid-item">
-      <div class="image-wrapper"><img src="assets/2.png" alt="Project 2"></div>
-      <div class="item-details">
-        <h2>Glass Geometry</h2><span>2023</span>
-      </div>
-    </a>
-    <a href="video.html?v=yY1FSsUV-8c" class="grid-item">
-      <div class="image-wrapper"><img src="assets/3.png" alt="Project 3"></div>
-      <div class="item-details">
-        <h2>Neon Edge</h2><span>2023</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/1.png" alt="Project 4"></div>
-      <div class="item-details">
-        <h2>Shadows</h2><span>2022</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/2.png" alt="Project 5"></div>
-      <div class="item-details">
-        <h2>Reflections</h2><span>2022</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/3.png" alt="Project 6"></div>
-      <div class="item-details">
-        <h2>Void Space</h2><span>2022</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/1.png" alt="Project 7"></div>
-      <div class="item-details">
-        <h2>Brutalism</h2><span>2021</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/2.png" alt="Project 8"></div>
-      <div class="item-details">
-        <h2>Abstract</h2><span>2021</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/3.png" alt="Project 9"></div>
-      <div class="item-details">
-        <h2>Lumina</h2><span>2021</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/1.png" alt="Project 10"></div>
-      <div class="item-details">
-        <h2>Monolith</h2><span>2020</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/2.png" alt="Project 11"></div>
-      <div class="item-details">
-        <h2>Prism</h2><span>2020</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/3.png" alt="Project 12"></div>
-      <div class="item-details">
-        <h2>Cyan</h2><span>2020</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/1.png" alt="Project 13"></div>
-      <div class="item-details">
-        <h2>Echo</h2><span>2019</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/2.png" alt="Project 14"></div>
-      <div class="item-details">
-        <h2>Velocity</h2><span>2019</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/3.png" alt="Project 15"></div>
-      <div class="item-details">
-        <h2>Horizon</h2><span>2019</span>
-      </div>
-    </a>
-    <a href="video.html" class="grid-item">
-      <div class="image-wrapper"><img src="assets/1.png" alt="Project 16"></div>
-      <div class="item-details">
-        <h2>Origin</h2><span>2018</span>
-      </div>
-    </a>
-  </section>
-
-  <section class="about-section">
-    <div class="about-image"></div>
-    <div class="about-content">
-      <h2>A Little About Me</h2>
-      <p>Equipped with a BFA (Bachelor of Fine Arts) degree in graphic design, I've collaborated with clients such as
-        First Hawaiian Bank, Pepsi, and ESPN during my time in Hawaii.</p>
-      <p>Having relocated to Chicago in 2017, I excelled as a Sr. Graphic Designer within a commercial real estate
-        company. I spearheaded the conceptualization and implementation of compelling visual narratives across a
-        spectrum of marketing materials and developed unique branding for over 30 commercial properties across Chicago
-        and its suburbs.</p>
-      <p>Currently, I'm a Sr. Art Director at a performance creative agency.</p>
-      <a href="#" class="about-btn">View Experience</a>
+      <p class="copyright">&copy; 2026 David Meskhi. All rights reserved.</p>
     </div>
-  </section>
-
-  <section class="extended-footer">
-    <div class="footer-container">
-      <!-- Skills & Programs -->
-      <div class="skills-section">
-        <div class="skills-column">
-          <h3>Programs</h3>
-          <ul>
-            <li>Figma</li>
-            <li>Photoshop</li>
-            <li>Illustrator</li>
-            <li>InDesign</li>
-            <li>Premiere Pro</li>
-            <li>After Effects</li>
-          </ul>
-        </div>
-        <div class="skills-column">
-          <h3>Design</h3>
-          <ul>
-            <li>Brand Identity</li>
-            <li>UI/UX Design</li>
-            <li>Creative Strategy</li>
-            <li>Art Direction</li>
-            <li>Social Media</li>
-            <li>Typography</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- The Process -->
-      <div class="process-section">
-        <div class="process-header">
-          <h3>The Process</h3>
-        </div>
-        <div class="process-grid">
-          <div class="process-step">
-            <h4>1</h4>
-            <p>Understanding the needs and objectives, gathering essential information to set the foundation for the
-              project.</p>
-          </div>
-          <div class="process-step">
-            <h4>2</h4>
-            <p>Exploring designs and providing multiple options that align with the vision, blending creativity with
-              strategy.</p>
-          </div>
-          <div class="process-step">
-            <h4>3</h4>
-            <p>Collaborations to refine the creative, making adjustments to ensure the final product meets all the
-              expectations.</p>
-          </div>
-          <div class="process-step">
-            <h4>4</h4>
-            <p>Polishing the design, preparing the final deliverables, and ensuring everything is ready for launch or
-              production.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Call to Action -->
-      <div class="contact-section">
-        <h2>So, what can I do for ya?</h2>
-        <a href="mailto:hello@example.com" class="contact-btn">Get In Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
+  </footer>
 </body>
 
 </html>
