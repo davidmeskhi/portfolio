@@ -238,7 +238,7 @@ nav a:hover {
     align-items: center;
     gap: 100px;
     width: max-content;
-    animation: scrollMarquee 30s linear infinite;
+    animation: scrollMarquee 200s linear infinite;
 }
 
 .marquee-track img {
