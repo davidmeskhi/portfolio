@@ -562,11 +562,19 @@ nav a:hover {
     width: calc(100% - 8% - 16px);
     max-width: 1500px;
     border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+}
+
+.services-track {
     display: flex;
     justify-content: space-between;
     gap: 40px;
-    position: relative;
-    z-index: 1;
+    width: 100%;
+}
+
+.services-pagination {
+    display: none;
 }
 
 .service-item {
@@ -869,9 +877,46 @@ textarea {
     }
 
     .services-box {
-        flex-direction: column;
-        gap: 50px;
-        padding: 50px 20px;
+        padding: 50px 0;
+    }
+
+    .services-track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        gap: 0;
+    }
+
+    .services-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .service-item {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        padding: 0 30px;
+    }
+
+    .services-pagination {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .services-pagination .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #e4e4e7;
+        transition: background-color 0.3s ease;
+    }
+
+    .services-pagination .dot.active {
+        background-color: rgba(154, 74, 253, 1);
     }
 
     .service-item {
@@ -932,7 +977,7 @@ textarea {
     }
 
     .services-box {
-        padding: 40px 15px;
+        padding: 40px 0;
         margin-top: 40px;
     }
 

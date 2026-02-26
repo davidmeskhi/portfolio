@@ -70,41 +70,48 @@
     <div style="position: relative">
       <div class="glow-bg"></div>
       <section class="services-box">
-        <div class="service-item">
-          <i class="ph-fill ph-pen-nib" style="
-                font-size: 28px;
-                color: var(--text-dark);
-                margin-bottom: 12px;
-              "></i>
-          <h4>Visual Content Design</h4>
-          <p>
-            High-impact digital visuals and promotional campaigns for social
-            media and digital platforms
-          </p>
+        <div class="services-track">
+          <div class="service-item">
+            <i class="ph-fill ph-pen-nib" style="
+                  font-size: 28px;
+                  color: var(--text-dark);
+                  margin-bottom: 12px;
+                "></i>
+            <h4>Visual Content Design</h4>
+            <p>
+              High-impact digital visuals and promotional campaigns for social
+              media and digital platforms
+            </p>
+          </div>
+          <div class="service-item">
+            <i class="ph-fill ph-swatches" style="
+                  font-size: 28px;
+                  color: var(--text-dark);
+                  margin-bottom: 12px;
+                "></i>
+            <h4>Brand &amp; Identity Systems</h4>
+            <p>
+              Cohesive brand identities, visual guidelines, and corporate design
+              assets
+            </p>
+          </div>
+          <div class="service-item">
+            <i class="ph-fill ph-chart-line-up" style="
+                  font-size: 28px;
+                  color: var(--text-dark);
+                  margin-bottom: 12px;
+                "></i>
+            <h4>Performance Creative</h4>
+            <p>
+              Content optimized for engagement, click-through rates, and
+              audience retention
+            </p>
+          </div>
         </div>
-        <div class="service-item">
-          <i class="ph-fill ph-swatches" style="
-                font-size: 28px;
-                color: var(--text-dark);
-                margin-bottom: 12px;
-              "></i>
-          <h4>Brand &amp; Identity Systems</h4>
-          <p>
-            Cohesive brand identities, visual guidelines, and corporate design
-            assets
-          </p>
-        </div>
-        <div class="service-item">
-          <i class="ph-fill ph-chart-line-up" style="
-                font-size: 28px;
-                color: var(--text-dark);
-                margin-bottom: 12px;
-              "></i>
-          <h4>Performance Creative</h4>
-          <p>
-            Content optimized for engagement, click-through rates, and
-            audience retention
-          </p>
+        <div class="services-pagination">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
         </div>
       </section>
       <div class="projects-glow-bottom"></div>
@@ -580,6 +587,26 @@
       track.querySelectorAll("img").forEach((img) => {
         img.addEventListener("dragstart", (e) => e.preventDefault());
       });
+
+      const servicesTrack = document.querySelector('.services-track');
+      const dots = document.querySelectorAll('.services-pagination .dot');
+
+      if (servicesTrack && dots.length > 0) {
+        servicesTrack.addEventListener('scroll', () => {
+          const scrollLeft = servicesTrack.scrollLeft;
+          const itemWidth = servicesTrack.clientWidth;
+
+          const activeIndex = Math.round(scrollLeft / itemWidth);
+
+          dots.forEach((dot, index) => {
+            if (index === activeIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        });
+      }
 
 
     });
