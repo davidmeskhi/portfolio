@@ -1004,7 +1004,7 @@ textarea {
 
     .about-tags {
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .selected-work-section {
@@ -1013,7 +1013,7 @@ textarea {
 
     .work-header h2 {
         font-size: 2rem;
-        text-align: center;
+        text-align: left;
     }
 
     .work-tabs {
