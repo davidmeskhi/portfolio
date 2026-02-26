@@ -904,20 +904,7 @@ textarea {
     }
 
     nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-
-    nav a {
-        margin: 0;
-        font-size: 0.9rem;
-    }
-
-    nav .btn-contact-header {
-        margin-left: 0 !important;
-        width: 100%;
-        text-align: center;
+        display: none;
     }
 
     .hero {
