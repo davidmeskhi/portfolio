@@ -423,53 +423,103 @@ nav a:hover {
     cursor: grabbing;
 }
 
-.thumbnails-standalone {
-    padding: 160px 0 120px;
+.selected-work-section {
+    padding: 160px 1.5% 120px;
+    max-width: 1520px;
+    margin: 0 auto;
     width: 100%;
 }
 
-.thumbnails-header {
-    text-align: center;
-    margin-bottom: 60px;
+.work-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
 }
 
-.thumbnails-header h2 {
+.work-header h2 {
     font-size: 2.5rem;
     font-weight: 400;
+    margin-bottom: 30px;
 }
 
-.thumbnails-row {
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 20px;
-    width: 100%;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.thumbnails-track {
+.work-tabs {
     display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: scrollCarousel 40s linear infinite;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.thumbnails-track img {
-    width: 300px;
-    height: 168px;
+.work-tab {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-muted);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-family: var(--font-sans), sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.work-tab:hover {
+    color: var(--text-light);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.work-tab.active {
+    background-color: var(--accent-green);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+.work-item {
+    width: 100%;
+}
+
+.work-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #1a1a1a;
     border-radius: 12px;
     object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    flex-shrink: 0;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@keyframes scrollCarousel {
-    0% {
-        transform: translateX(0);
+.work-item img:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
 
-    100% {
-        transform: translateX(calc(-50% - 10px));
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .work-grid {
+        grid-template-columns: 1fr;
     }
 }
 
