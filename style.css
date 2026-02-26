@@ -351,7 +351,7 @@ nav a:hover {
     overflow-x: auto;
     gap: 60px;
     padding-bottom: 40px;
-    
+
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-snap-type: x mandatory;
@@ -423,7 +423,7 @@ nav a:hover {
 
 .exp-card p {
     color: #a1a1aa;
-    
+
     line-height: 1.7;
     font-size: 1.05rem;
 }
@@ -444,7 +444,7 @@ nav a:hover {
     left: 0;
     height: 100%;
     width: 20%;
-    
+
     background-color: var(--accent-green);
     border-radius: 4px;
     cursor: pointer;
@@ -487,14 +487,11 @@ nav a:hover {
     border-radius: 50px;
     font-family: var(--font-sans), sans-serif;
     font-size: 0.95rem;
-    cursor: pointer;
+    cursor: default;
     transition: all 0.3s ease;
 }
 
-.work-tab:hover {
-    color: var(--text-light);
-    border-color: rgba(255, 255, 255, 0.4);
-}
+
 
 .work-tab.active {
     background-color: var(--accent-green);
@@ -1040,7 +1037,7 @@ textarea {
         flex-wrap: wrap;
     }
 
-    
+
     .services-box {
         position: relative;
     }
