@@ -253,7 +253,7 @@
         </div>
 
         <div class="work-grid">
-          <!-- Thumbnails -->
+          
           <div class="work-item" data-category="thumbnails">
             <img src="assets/1.png" alt="Thumbnail 1" />
           </div>
@@ -282,7 +282,7 @@
             <img src="assets/3.png" alt="Thumbnail 9" />
           </div>
 
-          <!-- Branding -->
+          
           <div class="work-item" data-category="branding" style="display: none">
             <img src="assets/2.png" alt="Branding 1" />
           </div>
@@ -311,7 +311,7 @@
             <img src="assets/1.png" alt="Branding 9" />
           </div>
 
-          <!-- Social Media -->
+          
           <div
             class="work-item"
             data-category="social-media"
@@ -376,7 +376,7 @@
             <img src="assets/2.png" alt="Social Media 9" />
           </div>
 
-          <!-- UI/UX Design -->
+          
           <div class="work-item" data-category="ui-ux" style="display: none">
             <img src="assets/3.png" alt="UI/UX 1" />
           </div>
@@ -606,9 +606,9 @@
 
         if (!track || !thumb) return;
 
-        // --- Variables for Smooth Scroll ---
+        
         let isDragging = false;
-        let dragMode = ""; // 'track' or 'thumb'
+        let dragMode = ""; 
         let startX;
         let startScrollLeft;
 
@@ -625,9 +625,9 @@
 
           if (isDragging) {
             const prevScroll = currentScrollLeft;
-            currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.2; // Lerp factor
+            currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.2; 
 
-            // Soft bounds constraint
+            
             if (targetScrollLeft < -50) targetScrollLeft = -50;
             if (targetScrollLeft > maxS + 50) targetScrollLeft = maxS + 50;
 
@@ -636,13 +636,13 @@
             if (dragMode === "track") {
               velX = currentScrollLeft - prevScroll;
             } else {
-              velX = 0; // Thumb dragging doesn't need track inertia
+              velX = 0; 
             }
           } else {
             if (Math.abs(velX) > 0.1) {
               currentScrollLeft += velX;
               track.scrollLeft = currentScrollLeft;
-              velX *= 0.95; // Glide friction
+              velX *= 0.95; 
 
               if (currentScrollLeft <= 0) {
                 currentScrollLeft = 0;
@@ -652,14 +652,14 @@
                 velX = 0;
               }
             } else {
-              // Sync internal state with native scroll changes (e.g., trackpad)
+              
               currentScrollLeft = track.scrollLeft;
               targetScrollLeft = track.scrollLeft;
             }
           }
 
           if (maxS > 0) {
-            // Keep visual percentage between 0 and 1
+            
             const scrollPercentage = Math.max(
               0,
               Math.min(1, track.scrollLeft / maxS),
@@ -680,10 +680,10 @@
           requestAnimationFrame(renderLoop);
         };
 
-        // Start the central engine
+        
         requestAnimationFrame(renderLoop);
 
-        // --- Interaction Events ---
+        
 
         thumb.addEventListener("mousedown", (e) => {
           isDragging = true;
@@ -740,7 +740,7 @@
           thumb.style.cursor = "pointer";
           track.style.cursor = "grab";
 
-          // Let momentum decay naturally, then turn snap back on
+          
           setTimeout(() => {
             if (!isDragging && Math.abs(velX) < 1) {
               track.style.scrollSnapType = "x mandatory";
@@ -754,7 +754,7 @@
           img.addEventListener("dragstart", (e) => e.preventDefault());
         });
 
-        // --- Work Grid Filter ---
+        
         const workTabs = document.querySelectorAll(".work-tab");
         const workItems = document.querySelectorAll(".work-item");
 
@@ -772,7 +772,7 @@
               ) {
                 item.style.display = "block";
                 item.style.animation = "none";
-                // Trigger reflow to restart animation
+                
                 void item.offsetWidth;
                 item.style.animation = "fadeIn 0.4s ease forwards";
               } else {

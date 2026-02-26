@@ -10,7 +10,6 @@ let isHovered = false;
 let currentSize = 40;
 
 window.addEventListener('mousemove', (e) => {
-    // We use pageX and pageY to account for document scroll
     mouseX = e.pageX;
     mouseY = e.pageY;
 });
