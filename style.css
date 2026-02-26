@@ -865,8 +865,104 @@ textarea {
 }
 
 @media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 1.5% 40px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    nav .btn-contact-header {
+        margin-left: 0 !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        margin-bottom: 60px;
+    }
+
     .hero h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
+    }
+
+    .hero-text {
+        font-size: 1.1rem;
+    }
+
+    .marquee {
+        margin: 60px auto 80px;
+    }
+
+    .marquee-track {
+        gap: 50px;
+    }
+
+    .marquee-track img {
+        height: 28px;
+    }
+
+    .services-box {
+        padding: 40px 15px;
+        margin-top: 40px;
+    }
+
+    .service-item h4 {
+        font-size: 1.2rem;
+    }
+
+    .about-me {
+        padding-top: 80px;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .about-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .about-tags {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .selected-work-section {
+        padding: 80px 1.5% 60px;
+    }
+
+    .work-header h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .work-tabs {
+        justify-content: center;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-section {
+        padding: 80px 1.5% 40px;
+    }
+
+    .experience-content h2 {
+        font-size: 2rem;
+    }
+
+    .experience-track {
+        gap: 20px;
     }
 
     .exp-card {
@@ -877,13 +973,35 @@ textarea {
         font-size: 2rem;
     }
 
+    .contact {
+        padding: 60px 1.5%;
+        gap: 40px;
+    }
+
+    .contact-info h2 {
+        font-size: 2.2rem;
+    }
+
+    .contact-form {
+        padding: 30px 20px;
+    }
+
     .form-row {
         flex-direction: column;
     }
 
-    header {
+    .site-footer {
+        padding: 30px 1.5%;
+    }
+
+    .footer-content {
         flex-direction: column;
-        gap: 20px;
-        padding-top: 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
