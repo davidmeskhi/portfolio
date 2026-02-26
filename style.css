@@ -897,7 +897,7 @@ textarea {
         flex: 0 0 100%;
         scroll-snap-align: center;
         scroll-snap-stop: always;
-        padding: 0 30px;
+        padding: 0 50px;
     }
 
     .services-pagination {
@@ -911,7 +911,7 @@ textarea {
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background-color: #e4e4e7;
+        background: var(--Color, #c3c3c3);
         transition: background-color 0.3s ease;
     }
 
