@@ -303,6 +303,16 @@ nav a:hover {
     transition: all 0.3s ease;
 }
 
+.marquee-track img[src*="Group_382954"] {
+    width: 224px;
+    height: 60px;
+}
+
+.marquee-track img[src*="bb_logo"] {
+    width: 168px;
+    height: 45px;
+}
+
 .marquee-track img:hover {
     filter: grayscale(0%);
     opacity: 1;
@@ -981,6 +991,16 @@ textarea {
     .marquee-track img {
         height: 28px;
         width: 100px;
+    }
+
+    .marquee-track img[src*="Group_382954"] {
+        width: 160px;
+        height: 44px;
+    }
+
+    .marquee-track img[src*="bb_logo"] {
+        width: 120px;
+        height: 33px;
     }
 
     .services-box {
