@@ -1017,7 +1017,22 @@ textarea {
     }
 
     .work-tabs {
-        justify-content: center;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .work-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .work-tab {
+        flex-shrink: 0;
     }
 
     .work-grid {
