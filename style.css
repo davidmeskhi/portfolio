@@ -995,7 +995,7 @@ textarea {
     .about-me {
         padding-top: 80px;
         gap: 40px;
-        text-align: center;
+        text-align: left;
     }
 
     .about-content h2 {
